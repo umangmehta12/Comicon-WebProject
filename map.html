@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Comic Book Stores</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 95%;
+            padding: 20px 20px 20px 20px;
+            overflow:hidden;
+        }
+
+        .main-wrapper {
+            height: 80%;
+            padding: 1px;
+            clear: both;
+            width: 80%;
+        }
+
+        h1 {
+            text-shadow: 0 3px 2px #7d7d7d;
+        }
+
+        h2 {
+            background-color: #518778;
+            color: #fff;
+            font-size: 1.1em;
+            padding: .5em;
+            width: 98%;
+            text-decoration: none;
+        }
+
+        a:link {
+            color: green;
+        }
+
+        a:visited {
+            color: green;
+        }
+
+        a:hover {
+            color: green;
+        }
+
+        a:active {
+            color: green;
+        }
+        #map-canvas 
+        {
+            height: 75%;
+            width: 90%;
+            margin: 2px auto;
+            padding: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map-canvas">
+    </div>
+</body>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"> </script>
+
+<script type="text/javascript">
+ 
+    var map;
+    var service;
+    function handleSearchResults(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+            var cicon = "images/store.png";
+            for (var i = 0; i < results.length; i++) {
+
+                var marker = new google.maps.Marker({
+                    position: results[i].geometry.location,
+                    Map: map,
+                    animation: google.maps.Animation.DROP,
+                    icon: cicon,
+                });
+
+            }
+        }
+    }
+
+
+    function performSearch() {
+        
+        var request = {
+            bounds: map.getBounds(),
+            keyword: "comic stores",
+        };
+        service.nearbySearch(request, handleSearchResults);
+
+    }
+
+    function initialize(location) {
+
+        var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+
+        var mapOptions = {
+            center: currentLocation,
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+        var infowindow = new google.maps.InfoWindow();
+        //var customizedIcon = "http://maps.google.com/mapfiles/ms/icons/blue.png";
+        var customizedIcon = "images/connect.png";
+
+        var yourPlaceMarker = new google.maps.Marker({
+            position: currentLocation,
+            map: map,
+            title: "You Are Now Here !!",
+            animation: google.maps.Animation.DROP,
+            icon: customizedIcon
+        });
+
+        google.maps.event.addListener(yourPlaceMarker, 'click', function () {
+            infowindow.setContent(this.title);
+            infowindow.open(map, this);
+
+            if (yourPlaceMarker.getAnimation() != null) { yourPlaceMarker.setAnimation(null); }
+            else { yourPlaceMarker.setAnimation(google.maps.Animation.BOUNCE); }
+
+        });
+
+        service = new google.maps.places.PlacesService(map);
+        google.maps.event.addListenerOnce(map, "bounds_changed", performSearch);
+
+    }
+
+    $(document).ready(function () {
+
+        navigator.geolocation.getCurrentPosition(initialize);
+
+    });
+
+</script>
+
+</html>

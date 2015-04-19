@@ -1,0 +1,112 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/JFAlert.css" />
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+    <!--star-wrap-->      
+	    <div class="wrap">	
+	    	<!--header--> 
+	      		<div class="header">
+	      				<!--start-logo-->
+				          <div class="logo">	
+				             <a href="default.aspx" target="_blank"><h1>Comi<span>con</span></h1></a>
+				          </div>
+				        <!--end-logo-->
+	      	 			<!--start-menu-->
+					  	<div class="menu">
+						  <a class="toggleMenu" href="#"><img src="images/nav.png" alt= " " /></a>
+							<ul class="nav">
+								<li class="active"><a href="default.aspx" target="_blank">home</a></li>
+                                <li><a href="search.aspx" target="_blank">Search</a></li>
+                                <li><a href="documentation/index.html" target="_blank">Documentation</a></li>
+                                <li ><a href="about.aspx" target="_blank">about</a></li>
+								<li><a href="contact.aspx" target="_blank">contact</a></li>
+							<div class="clear"> </div>
+						    </ul>
+							<script type="text/javascript" src="js/responsive-nav.js"></script>
+				        </div>	
+				        <div class="clear"> </div>
+						<!--end-menu-->
+				            				
+				</div>
+				</div>
+		  <!--end-header-->
+<!--end wrap-->    
+
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+   <div class="footer">
+	<div class="footer-main wrap">
+	<div class="footer-grids">
+		<div class="fgrid">
+			<h3>about Comicon</h3>
+			<p>Comicon is a website made for the final project in the Web Development Course.It is made inhibiting API calls from <a href="https://developers.google.com/maps/" >Google API</a> and <a href="https://www.comicvine.com/api">Comic Vine API</a></p>
+			<p>This project could not have been completed without the guidance of <a href="http://net4.ccs.neu.edu/home/rasala/">Prof.Rasala</a> and <a href="http://net4.ccs.neu.edu/home/jga/">Prof.Jose</a></p>
+		</div>
+		<div class="fgrid">
+		
+			<h3>twitter</h3>
+				<div>
+<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/ComicVine" data-widget-id="454030445055725568">Tweets by @ComicVine</a>
+<script>
+    !function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + "://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    } (document, "script", "twitter-wjs");
+</script>
+		</div>
+				<div>
+					<p>Follow <a href="#">@Comicvine</a></p>
+				</div>
+		</div>
+		<div class="fgrid">
+			<h3>contact me</h3>
+			<p>75 St Alphonsus Street,#1504,Boston,MA 02120</p>
+			<a href="#"><p>comicwebies@gmail.com</p></a>
+			<h4>(617)-435-3275</h4>
+				<div class="social-media">
+			     <ul>
+			        <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="Facebook"><a href="https://www.facebook.com/umangmehta12" target="_blank"> </a></span></li>
+			        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="twitter"><a href="https://twitter.com/umangrulz" target="_blank"> </a> </span></li>
+			        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="email"><a href="https://plus.google.com/114366605441346898542/posts" target="_blank"> </a></span></li>
+			      <li><span class="simptip-position-bottom simptip-movable" data-tooltip="LinkedIn"><a href="https://www.linkedin.com/in/umangmehtacomputerscience/" target="_blank"> </a> </span></li>
+				</ul>
+		</div>
+		</div>
+		<div class="clear"> </div>
+	</div>
+</div>
+</div>
+<!--end footer-->
+<div class="copy-right">
+			<div class="wrap">
+				<div class="copy-right-left">
+					<p> &copy; 2014 Umang Mukesh Mehta</p>
+				</div>
+			</div>
+			</div>
+</div>
+</form>
+</body>
+</html>
